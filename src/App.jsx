@@ -2,11 +2,11 @@ function App() {
   return (
     <>
       <main>
-        <div className="flex">
-          <div className="">
-            <img src="/images/desktop-image-hero-1.jpg" alt="" />
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-fit">
+            <img src="/images/desktop-image-hero-1.jpg" className="bg-cover " alt="" />
           </div>
-          <div className="bg-white relative w-[700px] h-[523px] text-center p-[120px]">
+          <div className="bg-white relative lg:w-[700px]  h-[523px] text-center p-9 lg:p-[120px]">
             <h1 className="text-left text-4xl mb-6  font-[700]">
               Discover innovative ways to decorate
             </h1>
@@ -24,7 +24,7 @@ function App() {
               <img src="/images/icon-arrow.svg" className="mt-4" alt="" />
             </div>
 
-            <div className="flex absolute  bottom-0 left-0 ">
+            <div className="flex absolute  bottom-0 lg:left-0 right-0 -top-16  ">
               <button className="w-[60px] flex justify-center h-[60px] bg-black">
                 <img
                   src="/images/icon-angle-left.svg"
@@ -42,25 +42,25 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="absolute top-10 left-[60px] flex items-center gap-12">
+        <div className="absolute flex-col lg:flex-row top-10 left-[60px] flex items-center gap-12">
           <img src="/images/logo.svg" alt="" />
 
-          <ul className="flex text-white gap-8 font-semibold">
+          <ul className="flex  text-white gap-8 font-semibold">
             <li>home</li>
             <li>shop</li>
             <li>about</li>
             <li>contact</li>
           </ul>
         </div>
-        <div className="flex">
-          <div className="w-[45%]  h-[223px]">
+        <div className="flex flex-col lg:flex-row">
+          <div className="lg:w-[50%]  h-[223px]">
             <img
               src="/images/image-about-dark.jpg"
               className="w-full h-full"
               alt=""
             />
           </div>
-          <div className="w-[40%] bg-white h-[223px] p-[34px]">
+          <div className="lg:w-[40%] bg-white h-[223px] p-9 lg:p-[34px]">
             <h1 className="tracking-[6px] mb-2 font-bold">
               ABOUT OUR FURNITURE
             </h1>
@@ -73,7 +73,7 @@ function App() {
               to help you create your dream space.
             </p>
           </div>
-          <div className="w-[52%] bg-red-500 h-[223px]">
+          <div className="lg:w-[55%] mt-14 lg:mt-0 bg-red-500 h-[223px]">
             <img
               src="/images/image-about-light.jpg"
               className="w-full h-full"
