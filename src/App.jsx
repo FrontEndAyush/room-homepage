@@ -1,10 +1,22 @@
+import { useState } from "react";
+
 function App() {
+  let [isTrue, setIsTrue] = useState(false)
+
+  function hideUnhidefunction(){
+    setIsTrue((prev) => !prev)
+    console.log(isTrue)
+  }
   return (
     <>
       <main>
         <div className="flex flex-col lg:flex-row">
           <div className="w-fit">
-            <img src="/images/desktop-image-hero-1.jpg" className="bg-cover " alt="" />
+            <img
+              src="/images/desktop-image-hero-1.jpg"
+              className="bg-cover "
+              alt=""
+            />
           </div>
           <div className="bg-white relative lg:w-[700px]  h-[523px] text-center p-9 lg:p-[120px]">
             <h1 className="text-left text-4xl mb-6  font-[700]">
@@ -42,15 +54,29 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="absolute flex-col lg:flex-row top-10 left-[60px] flex items-center gap-12">
+        <div className="absolute flex-row lg:flex-row top-10 left-[60px] flex items-center gap-16 lg:gap-12">
+          <img src="/images/icon-hamburger.svg" onClick = {hideUnhidefunction} className="lg:hidden" alt="" />
           <img src="/images/logo.svg" alt="" />
+          
+          <div className= {`absolute  ${isTrue == true ? "block" : "hidden" } -left-16 -top-10 h-[80px] p-7  w-[363px] bg-white`}>
+          <ul className="flex font-bold items-center text-black gap-8 ">
+            <img src="/images/icon-close.svg" onClick={hideUnhidefunction} alt="" />
+              <li>home</li>
+              <li>shop</li>
+              <li>about</li>
+              <li>contact</li>
+            </ul>
+          </div>
 
-          <ul className="flex  text-white gap-8 font-semibold">
-            <li>home</li>
-            <li>shop</li>
-            <li>about</li>
-            <li>contact</li>
-          </ul>
+          <div className="hidden lg:block">
+            {" "}
+            <ul className="flex  text-white gap-8 font-semibold">
+              <li>home</li>
+              <li>shop</li>
+              <li>about</li>
+              <li>contact</li>
+            </ul>
+          </div>
         </div>
         <div className="flex flex-col lg:flex-row">
           <div className="lg:w-[50%]  h-[223px]">
