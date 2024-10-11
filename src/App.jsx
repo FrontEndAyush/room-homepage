@@ -1,11 +1,28 @@
 import { useState } from "react";
 
 function App() {
-  let [isTrue, setIsTrue] = useState(false)
+  let [isTrue, setIsTrue] = useState(false);
+  let imageArray = ["images/desktop-image-hero-1.jpg ", "images/desktop-image-hero-2.jpg", "images/desktop-image-hero-3.jpg" ];
+  let [isImg, setIsImg] = useState(0);
+  let [counter, setCounter] = useState(0);
 
-  function hideUnhidefunction(){
-    setIsTrue((prev) => !prev)
-    console.log(isTrue)
+  function changeHeroImage() {
+    setCounter(prev => setCounter(prev++))
+    if(counter > 2) {
+      setCounter(0);
+    }
+    else{
+
+    setIsImg(counter);
+    console.log(counter)
+   }
+  
+  }
+  
+
+  function hideUnhidefunction() {
+    setIsTrue((prev) => !prev);
+    console.log(isTrue);
   }
   return (
     <>
@@ -13,8 +30,8 @@ function App() {
         <div className="flex flex-col lg:flex-row">
           <div className="w-fit">
             <img
-              src="/images/desktop-image-hero-1.jpg"
-              className="bg-cover "
+              src={imageArray[counter]}
+              className="bg-cover w-[100%] "
               alt=""
             />
           </div>
@@ -36,7 +53,7 @@ function App() {
               <img src="/images/icon-arrow.svg" className="mt-4" alt="" />
             </div>
 
-            <div className="flex absolute  bottom-0 lg:left-0 right-0 -top-16  ">
+            <div className="flex absolute  bottom-0 lg:left-0 right-0 -top-16 lg:top-[465px]  ">
               <button className="w-[60px] flex justify-center h-[60px] bg-black">
                 <img
                   src="/images/icon-angle-left.svg"
@@ -49,18 +66,32 @@ function App() {
                   src="/images/icon-angle-right.svg"
                   className="mt-4"
                   alt=""
+                  onClick={changeHeroImage}
                 />
               </button>
             </div>
           </div>
         </div>
-        <div className="absolute flex-row lg:flex-row top-10 left-[60px] flex items-center gap-16 lg:gap-12">
-          <img src="/images/icon-hamburger.svg" onClick = {hideUnhidefunction} className="lg:hidden" alt="" />
+        <div className="absolute w-full lg:w-[500px] flex-row lg:flex-row top-10 left-[60px] flex items-center gap-16 lg:gap-12">
+          <img
+            src="/images/icon-hamburger.svg"
+            onClick={hideUnhidefunction}
+            className="lg:hidden"
+            alt=""
+          />
           <img src="/images/logo.svg" alt="" />
-          
-          <div className= {`absolute  ${isTrue == true ? "block" : "hidden" } -left-16 -top-10 h-[80px] p-7  w-[363px] bg-white`}>
-          <ul className="flex font-bold items-center text-black gap-8 ">
-            <img src="/images/icon-close.svg" onClick={hideUnhidefunction} alt="" />
+
+          <div
+            className={`absolute  ${
+              isTrue == true ? "block" : "hidden"
+            } -left-16 -top-10 h-[80px] p-7  w-full bg-white`}
+          >
+            <ul className="flex font-bold items-center text-black gap-8 ">
+              <img
+                src="/images/icon-close.svg"
+                onClick={hideUnhidefunction}
+                alt=""
+              />
               <li>home</li>
               <li>shop</li>
               <li>about</li>
@@ -99,7 +130,7 @@ function App() {
               to help you create your dream space.
             </p>
           </div>
-          <div className="lg:w-[55%] mt-14 lg:mt-0 bg-red-500 h-[223px]">
+          <div className="lg:w-[56%] mt-14 lg:mt-0 bg-red-500 h-[223px]">
             <img
               src="/images/image-about-light.jpg"
               className="w-full h-full"
