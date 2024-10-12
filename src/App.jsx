@@ -2,23 +2,35 @@ import { useState } from "react";
 
 function App() {
   let [isTrue, setIsTrue] = useState(false);
-  let imageArray = ["images/desktop-image-hero-1.jpg ", "images/desktop-image-hero-2.jpg", "images/desktop-image-hero-3.jpg" ];
-  let [isImg, setIsImg] = useState(0);
-  let [counter, setCounter] = useState(0);
+  let imageArray = [
+    "images/desktop-image-hero-1.jpg ",
+    "images/desktop-image-hero-2.jpg",
+    "images/desktop-image-hero-3.jpg",
+  ];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   function changeHeroImage() {
-    setCounter(prev => setCounter(prev++))
-    if(counter > 2) {
-      setCounter(0);
-    }
-    else{
 
-    setIsImg(counter);
-    console.log(counter)
-   }
-  
+   setCurrentImageIndex((prevIndex) => {
+    if (prevIndex === imageArray.length - 1) {
+      return 0;  // Go back to the first image
+    } else {
+      return prevIndex + 1;  // Move to the next image
+    }
+  });
   }
-  
+
+  function  changeHeroImagBackword(){
+    setCurrentImageIndex((prev) => {
+      if(prev ===0) {
+      return imageArray.length-1
+      }
+      else{
+        return prev-1;
+      }
+    })
+  }
+
 
   function hideUnhidefunction() {
     setIsTrue((prev) => !prev);
@@ -30,7 +42,7 @@ function App() {
         <div className="flex flex-col lg:flex-row">
           <div className="w-fit">
             <img
-              src={imageArray[counter]}
+              src={imageArray[currentImageIndex]}
               className="bg-cover w-[100%] "
               alt=""
             />
@@ -54,14 +66,15 @@ function App() {
             </div>
 
             <div className="flex absolute  bottom-0 lg:left-0 right-0 -top-16 lg:top-[465px]  ">
-              <button className="w-[60px] flex justify-center h-[60px] bg-black">
+              <button className="w-[60px] flex justify-center h-[60px] hover:bg-gray-400 duration-300 bg-black">
                 <img
                   src="/images/icon-angle-left.svg"
                   className="mt-4"
                   alt=""
+                  onClick={changeHeroImagBackword}
                 />
               </button>
-              <button className="w-[60px] flex justify-center  h-[60px] bg-black">
+              <button className="w-[60px] flex justify-center hover:bg-gray-400 duration-300  h-[60px] bg-black">
                 <img
                   src="/images/icon-angle-right.svg"
                   className="mt-4"
